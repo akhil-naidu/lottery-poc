@@ -1,6 +1,7 @@
-import { CodegenConfig } from "@graphql-codegen/cli";
+import type { CodegenConfig } from "@graphql-codegen/cli";
 
 const config: CodegenConfig = {
+  overwrite: true,
   schema: [
     {
       "https://hasura-template-production.up.railway.app/v1/graphql": {
@@ -10,11 +11,20 @@ const config: CodegenConfig = {
       },
     },
   ],
-  documents: ["./**/*.tsx"],
-  ignoreNoDocuments: true, // for better experience with the watcher
+  ignoreNoDocuments: true,
   generates: {
     "./generated/gql/": {
+      documents: "queries/**/*.{ts,tsx}",
       preset: "client",
+      plugins: [
+        "typescript",
+        "typescript-operations",
+        "typed-document-node",
+        "typescript-react-query",
+      ],
+    },
+    "./graphql.schema.json": {
+      plugins: ["introspection"],
     },
   },
 };
