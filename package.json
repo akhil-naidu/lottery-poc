@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "generate": "graphql-codegen --config codegen.ts"
+    "generate": "graphql-codegen --config codegen.ts",
+    "generate watch": "graphql-codegen --config --watch codegen.ts"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.0.2",
