@@ -37,7 +37,6 @@ const config: CodegenConfig = {
       config: { minify: true },
     },
   },
-  watch: true,
 };
 
 export default config;
