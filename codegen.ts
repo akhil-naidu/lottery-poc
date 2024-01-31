@@ -16,9 +16,11 @@ const config: CodegenConfig = {
       documents: "queries/**/*.{ts,tsx,graphql}",
       overwrite: true,
       plugins: [
-        "typescript",
-        "typescript-operations",
-        "typescript-react-query",
+        {
+          typescript: {},
+          typescriptOperations: {},
+          typescriptReactQuery: {},
+        },
       ],
       config: {
         withHooks: true,
