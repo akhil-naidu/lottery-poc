@@ -1,0 +1,11 @@
+mutation DeleteContest($contestId: ID!) {
+  deleteContest(id: $contestId) {
+    id
+    contest_name
+    contest_no
+    total_price
+    total_amount
+    type
+    status
+  }
+}
