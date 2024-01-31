@@ -1,0 +1,11 @@
+mutation DeleteContest($id: uuid!) {
+  delete_contest_by_pk(id: $id) {
+    contest_name
+    contest_no
+    id
+    status
+    total_amount
+    total_price
+    type
+  }
+}

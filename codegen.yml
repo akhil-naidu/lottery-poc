@@ -1,0 +1,14 @@
+schema:
+  - https://hasura-template-production.up.railway.app/v1/graphql:
+      headers:
+        x-hasura-admin-secret: iwillhack
+
+documents:
+  - "./queries/**/*.graphql"
+
+generates:
+  ./generated/gql/:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
