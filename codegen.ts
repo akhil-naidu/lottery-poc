@@ -12,7 +12,7 @@ const config: CodegenConfig = {
   ],
   ignoreNoDocuments: true,
   generates: {
-    "./generated/gql/": {
+    "./generated/graphql.ts": {
       documents: "queries/**/*.{ts,tsx,graphql}",
       overwrite: true,
       plugins: [
