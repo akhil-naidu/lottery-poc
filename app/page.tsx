@@ -1,25 +1,19 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import {
+  GetAllContestsDocument,
+  GetAllContestsQuery,
+  GetAllContestsQueryVariables,
+} from "@/generated/graphql";
 import { gql, useQuery } from "@apollo/client";
 import React from "react";
 
 const HomePage = () => {
-  const GET_CONTESTS = gql`
-    query GetAllContest {
-      contest {
-        contest_name
-        contest_no
-        id
-        status
-        total_amount
-        total_price
-        type
-      }
-    }
-  `;
-
-  const { data, loading } = useQuery(GET_CONTESTS);
+  const { data, loading } = useQuery<
+    GetAllContestsQuery,
+    GetAllContestsQueryVariables
+  >(GetAllContestsDocument);
 
   console.log("contests: ", data);
 

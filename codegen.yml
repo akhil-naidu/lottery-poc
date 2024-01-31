@@ -7,7 +7,7 @@ documents:
   - "./queries/**/*.graphql"
 
 generates:
-  ./generated/gql/:
+  ./generated/graphql.ts:
     plugins:
       - typescript
       - typescript-operations
