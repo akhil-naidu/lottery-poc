@@ -1,11 +1,11 @@
-query GetContestById($contestId: ID!) {
-  contest(id: $contestId) {
-    id
+query MyQuery($id: uuid!) {
+  contest_by_pk(id: $id) {
     contest_name
     contest_no
-    total_price
-    total_amount
-    type
+    id
     status
+    total_amount
+    total_price
+    type
   }
 }

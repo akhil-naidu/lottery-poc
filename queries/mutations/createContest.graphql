@@ -1,11 +1,11 @@
-mutation CreateContest($input: ContestInput!) {
-  createContest(input: $input) {
-    id
+mutation CreateContest($input: contest_insert_input!) {
+  insert_contest_one(object: $input) {
     contest_name
     contest_no
-    total_price
-    total_amount
-    type
+    id
     status
+    total_amount
+    total_price
+    type
   }
 }

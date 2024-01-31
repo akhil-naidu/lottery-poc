@@ -13,7 +13,7 @@ const config: CodegenConfig = {
   ignoreNoDocuments: true,
   generates: {
     "./generated/gql/": {
-      documents: "queries/**/*.{ts,tsx}",
+      documents: "queries/**/*.{ts,tsx,graphql}",
       overwrite: true,
       preset: "client",
       plugins: [
@@ -37,6 +37,7 @@ const config: CodegenConfig = {
       config: { minify: true },
     },
   },
+  watch: true,
 };
 
 export default config;
