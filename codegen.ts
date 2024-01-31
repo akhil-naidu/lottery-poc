@@ -12,14 +12,12 @@ const config: CodegenConfig = {
   ],
   ignoreNoDocuments: true,
   generates: {
-    "./generated/gql/": {
+    "./generated/graphql.ts": {
       documents: "queries/**/*.{ts,tsx,graphql}",
       overwrite: true,
-      preset: "client",
       plugins: [
         "typescript",
         "typescript-operations",
-        "typed-document-node",
         "typescript-react-query",
       ],
       config: {
