@@ -46,9 +46,9 @@ import type { CodegenConfig } from "@graphql-codegen/cli";
 const config: CodegenConfig = {
   schema: [
     {
-      "https://hasura-template-production.up.railway.app/v1/graphql": {
+      GRAPHQL_ENDPOINT: {
         headers: {
-          "x-hasura-admin-secret": "iwillhack",
+          "x-hasura-admin-secret": "HASURA_ADMIN_SECRET",
         },
       },
     },
