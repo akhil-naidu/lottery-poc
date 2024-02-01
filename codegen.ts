@@ -3,9 +3,10 @@ import type { CodegenConfig } from "@graphql-codegen/cli";
 const config: CodegenConfig = {
   schema: [
     {
-      "https://hasura-template-production.up.railway.app/v1/graphql": {
+      [process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT!]: {
         headers: {
-          "x-hasura-admin-secret": "iwillhack",
+          "x-hasura-admin-secret":
+            process.env.NEXT_PUBLIC_HASURA_ADMIN_SECRET || "",
         },
       },
     },
