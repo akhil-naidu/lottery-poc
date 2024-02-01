@@ -5,9 +5,10 @@ import React from "react";
 
 const ApolloClientProvider = ({ children }: { children: React.ReactNode }) => {
   const client = new ApolloClient({
-    uri: "https://hasura-template-production.up.railway.app/v1/graphql",
+    uri: process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT!,
     headers: {
-      "x-hasura-admin-secret": "iwillhack",
+      "x-hasura-admin-secret":
+        process.env.NEXT_PUBLIC_HASURA_ADMIN_SECRET || "",
     },
     cache: new InMemoryCache(),
   });
