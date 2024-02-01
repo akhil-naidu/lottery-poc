@@ -104,3 +104,23 @@ npm install @graphql-codegen/cli @graphql-codegen/introspection @graphql-codegen
 The configuration is set up and ready to generate TypeScript code based on your GraphQL schema and queries. Ensure that the GraphQL server specified in the configuration is accessible and that the provided admin secret is valid.
 
 Feel free to customize the configuration based on your project requirements. If you encounter any issues, refer to the [GraphQL Codegen documentation](https://graphql-code-generator.com/) for troubleshooting and additional features.
+
+## Additional Customization and Resources
+
+### Custom Fetcher with TypeScript-React-Query
+
+If you are using [TypeScript-React-Query](https://the-guild.dev/graphql/codegen/plugins/typescript/typescript-react-query#using-custom-fetcher) and want to use a custom fetcher, you can follow the documentation provided by the official plugin.
+
+### Integration with Nhost
+
+For a guide on how to use GraphQL Codegen with React and TypeScript in conjunction with [Nhost](https://nhost.io/), check out the tutorial [How to Use GraphQL Code Generator with React Query](https://nhost.io/blog/how-to-use-graphql-code-generator-with-react-query) on the Nhost blog.
+
+### Making GraphQL Codegen Work for You
+
+Novu.co has a comprehensive guide titled [Making GraphQL Codegen Work for You: GraphQL Integration with React and TypeScript](https://novu.co/blog/making-graphql-codegen-work-for-you-graphql-integration-with-react-and-typescript/). This guide covers various aspects of integrating GraphQL Codegen with React and TypeScript and provides valuable insights.
+
+### TypeScript-React-Apollo Plugin
+
+If you prefer using the TypeScript-React-Apollo plugin, you can find detailed information on its usage in the [official documentation](https://the-guild.dev/graphql/codegen/plugins/typescript/typescript-react-apollo). This plugin offers seamless integration of GraphQL Codegen with Apollo Client in a TypeScript and React environment.
+
+Feel free to explore these resources for more customization options and insights into using GraphQL Codegen effectively in your project.
