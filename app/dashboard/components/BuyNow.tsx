@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import {
   Dialog,
@@ -22,8 +24,7 @@ const BuyNow = ({ count, product }: { count: number; product: any }) => {
 
   // const data = useTokens((state) => state.tokens);
 
-  const [manoj, tokens, addToToken] = useTokens((state): any => [
-    state.manoj,
+  const [tokens, addToToken] = useTokens((state: any) => [
     state.tokens,
     state.addToToken,
   ]);

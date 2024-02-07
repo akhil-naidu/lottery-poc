@@ -23,7 +23,7 @@ interface productData {
   ticketPrice: number;
 }
 
-const ProductCard = ({ product }: productData) => {
+const ProductCard = ({ product }: { product: any }) => {
   const [count, setCount] = useState(0);
   return (
     <div>
