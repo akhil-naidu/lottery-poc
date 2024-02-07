@@ -5,9 +5,7 @@ export const useTokens = create((set) => ({
 
   addToToken: (tokens: any) => {
     set((state: { tokens: any }) => {
-      tokens: [...state.tokens, tokens];
+      return { tokens: [...state.tokens, tokens] };
     });
   },
-
-  manoj: "hello",
 }));

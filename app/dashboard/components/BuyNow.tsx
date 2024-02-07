@@ -18,18 +18,12 @@ import { useTokens } from "@/states/tokens";
 import { generateArrayOfTickts } from "@/lib/generateToken";
 
 const BuyNow = ({ count, product }: { count: number; product: any }) => {
-  // const [tokensData, setTokensData] = useState([]);
-
-  // const addToToken = useTokens((state) => state.manoj);
-
-  // const data = useTokens((state) => state.tokens);
-
   const [tokens, addToToken] = useTokens((state: any) => [
     state.tokens,
     state.addToToken,
   ]);
 
-  console.log("data", tokens);
+  console.log("tokerns", tokens);
 
   //   console.log(tokensData);
   const handleConfirm = () => {
@@ -38,6 +32,7 @@ const BuyNow = ({ count, product }: { count: number; product: any }) => {
       title: product.name,
       userId: 2,
     });
+    console.log("data", data);
     addToToken(data);
   };
   return (
