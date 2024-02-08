@@ -42,13 +42,8 @@ export default function Contest({ contestDetails }: any) {
     state.updateLive,
   ]);
 
-  const time = 5000;
-
+  const time = 2000;
   const [count, setCount] = useState(1);
-  // const [live, setLive] = useState(false);
-
-  console.log(live);
-
   const tokens = useTokens((state: any) => state.tokens);
 
   const getwinner = () => {

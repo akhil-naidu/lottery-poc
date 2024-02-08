@@ -9,10 +9,22 @@ export const useContest = create((set) => ({
     });
   },
   updateLive: (contestId: any) => {
+    // set((state: any) => {
+    //   const myNextList = [...state.contests];
+    //   const contest = myNextList.find((a) => a.contestName === contestId);
+    //   contest.live = false;
+    //   return {
+    //     contests: myNextList,
+    //   };
+    // });
     set((state: any) => {
-      const myNextList = [...state.contests];
-      const contest = myNextList.find((a) => a.contestName === contestId);
-      contest.live = false;
+      const myNextList = state.contests.map((a: any) => {
+        if (a.contestName === contestId) {
+          return { ...a, live: false };
+        } else {
+          return a;
+        }
+      });
       return {
         contests: myNextList,
       };
