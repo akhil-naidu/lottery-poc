@@ -7,6 +7,11 @@ export function generateArrayOfTickts({
   contestName,
   count,
   ticketPrice,
+}: {
+  userId: number;
+  contestName: string;
+  count: number;
+  ticketPrice: any;
 }) {
   const arrayOfTickets = [];
 

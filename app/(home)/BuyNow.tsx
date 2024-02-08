@@ -15,7 +15,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 
 import { useTokens } from "@/states/tokens";
-import { generateArrayOfTickts } from "@/lib/generateToken";
+import { generateArrayOfTickts } from "@/lib/generateTokens";
 
 const BuyNow = ({
   count,

@@ -18,15 +18,15 @@ export const useContest = create((set) => ({
     //   };
     // });
     set((state: any) => {
-      const myNextList = state.contests.map((a: any) => {
-        if (a.contestName === contestId) {
-          return { ...a, live: false };
+      const updatedContest = state.contests.map((contest: any) => {
+        if (contest.contestName === contestId) {
+          return { ...contest, live: false };
         } else {
-          return a;
+          return contest;
         }
       });
       return {
-        contests: myNextList,
+        contests: updatedContest,
       };
     });
   },

@@ -85,7 +85,7 @@ export default function CardWithForm() {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>name</FormLabel>
+                  <FormLabel>Contest Name</FormLabel>
                   <FormControl>
                     <Input
                       placeholder="Enter name of the contest"
@@ -101,7 +101,7 @@ export default function CardWithForm() {
               name="ticketPrice"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>ticket price</FormLabel>
+                  <FormLabel>Ticket Price</FormLabel>
                   <FormControl>
                     <Input placeholder="Enter ticket price" {...field} />
                   </FormControl>
@@ -113,7 +113,7 @@ export default function CardWithForm() {
               name="type"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>Product Type</FormLabel>
                   <Select
                     onValueChange={field.onChange}
                     defaultValue={field.value}
@@ -137,7 +137,7 @@ export default function CardWithForm() {
               name="totalAmount"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>total amount</FormLabel>
+                  <FormLabel>Total Amount</FormLabel>
                   <FormControl>
                     <Input
                       placeholder="Enter total of the contest"

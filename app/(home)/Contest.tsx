@@ -11,16 +11,15 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-
 import { Label } from "@/components/ui/label";
-// import Counter from "./Counter";
+
 import BuyNow from "./BuyNow";
-import { useTokens } from "@/states/tokens";
 import Timer from "./Timer";
+
 import { useWinners } from "@/states/winners";
-import { constrainedMemory } from "process";
-import { Condiment } from "next/font/google";
 import { useContest } from "@/states/contests";
+import { useTokens } from "@/states/tokens";
+import ShowResults from "./ShowResults";
 
 export default function Contest({ contestDetails }: any) {
   const {
@@ -42,7 +41,7 @@ export default function Contest({ contestDetails }: any) {
     state.updateLive,
   ]);
 
-  const time = 2000;
+  const time = 10000;
   const [count, setCount] = useState(1);
   const tokens = useTokens((state: any) => state.tokens);
 
@@ -53,13 +52,11 @@ export default function Contest({ contestDetails }: any) {
 
     const generateWinnerToken = () => {
       const randomIndex = Math.floor(Math.random() * filteredTokens.length);
-
       return filteredTokens[randomIndex];
     };
 
     if (live) {
       const winner = generateWinnerToken();
-      // setLive(true);
       updateLive(contestName);
       addToWinners(winner);
     }
@@ -76,19 +73,26 @@ export default function Contest({ contestDetails }: any) {
           <Label>Ticket Price:</Label> {ticketPrice}$
         </div>
         <div>
-          {tokens
-            .flat()
-            .filter((token: any) => token.contestName === contestName).length *
-            1000 >
-          Number(totalAmount) ? (
+          {live ? (
             <div>
-              <div>Tickets lefts : {remainingTickets}</div>
-              <div>
-                Context will Expire <Timer time={time} getwinner={getwinner} />
-              </div>
-              {/* {winner && <div>{JSON.stringify(winner)}</div>} */}
+              {tokens
+                .flat()
+                .filter((token: any) => token.contestName === contestName)
+                .length *
+                1000 >
+              Number(totalAmount) ? (
+                <div>
+                  <div>
+                    Get your tokens now!!!
+                    <Timer time={time} getwinner={getwinner} />
+                  </div>
+                  {/* {winner && <div>{JSON.stringify(winner)}</div>} */}
+                </div>
+              ) : null}
             </div>
-          ) : null}
+          ) : (
+            <div>contest has been ended</div>
+          )}
         </div>
       </CardContent>
       <CardFooter className="flex justify-between">
@@ -108,14 +112,17 @@ export default function Contest({ contestDetails }: any) {
             +
           </Button>
         </div>
-        {/* <Button>Buy</Button> */}
-        <BuyNow
-          contestName={contestName}
-          count={count}
-          setCount={setCount}
-          live={live}
-          ticketPrice={ticketPrice}
-        />
+        {live ? (
+          <BuyNow
+            contestName={contestName}
+            count={count}
+            setCount={setCount}
+            live={live}
+            ticketPrice={ticketPrice}
+          />
+        ) : (
+          <ShowResults contestName={contestName} />
+        )}
       </CardFooter>
     </Card>
   );
