@@ -1,8 +1,8 @@
-"use client";
-import * as React from "react";
-import { nanoid } from "nanoid";
+'use client';
+import * as React from 'react';
+import { nanoid } from 'nanoid';
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
@@ -10,9 +10,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+} from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import {
   Form,
   FormControl,
@@ -21,19 +21,20 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
+} from '@/components/ui/form';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { useContest } from "@/states/contests";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { useToast } from "@/components/ui/use-toast";
+} from '@/components/ui/select';
+import { useContest } from '@/states/contests';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { useToast } from '@/components/ui/use-toast';
+import { useRouter } from 'next/navigation';
 
 const formSchema = z.object({
   name: z.string().min(2).max(50),
@@ -50,13 +51,15 @@ export default function CardWithForm() {
 
   const { toast } = useToast();
 
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "",
-      ticketPrice: "",
-      type: "",
-      totalAmount: "",
+      name: '',
+      ticketPrice: '',
+      type: '',
+      totalAmount: '',
     },
   });
 
@@ -71,33 +74,34 @@ export default function CardWithForm() {
       live: true,
     });
     toast({
-      title: "successfully contest added",
-      description: "",
+      title: 'successfully contest added',
+      description: '',
     });
 
     // values : defaultValues
-    form.reset({ name: "", ticketPrice: "", type: "", totalAmount: "" });
+    form.reset({ name: '', ticketPrice: '', type: '', totalAmount: '' });
+    router.push('/');
   }
 
   return (
-    <Card className="w-[350px]">
+    <Card className='w-[350px]'>
       <CardHeader>
         <CardTitle>Add new product</CardTitle>
         <CardDescription>Pre approved products by admins</CardDescription>
       </CardHeader>
       <CardContent>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-8'>
             <FormField
               control={form.control}
-              name="name"
+              name='name'
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Contest Name</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="Enter name of the contest"
-                      id="name"
+                      placeholder='Enter name of the contest'
+                      id='name'
                       {...field}
                     />
                   </FormControl>
@@ -106,19 +110,19 @@ export default function CardWithForm() {
             />
             <FormField
               control={form.control}
-              name="ticketPrice"
+              name='ticketPrice'
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Ticket Price</FormLabel>
                   <FormControl>
-                    <Input placeholder="Enter ticket price" {...field} />
+                    <Input placeholder='Enter ticket price' {...field} />
                   </FormControl>
                 </FormItem>
               )}
             />
             <FormField
               control={form.control}
-              name="type"
+              name='type'
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Product Type</FormLabel>
@@ -128,13 +132,13 @@ export default function CardWithForm() {
                   >
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="select type of the product" />
+                        <SelectValue placeholder='select type of the product' />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="cars">cars</SelectItem>
-                      <SelectItem value="electronics">electronics</SelectItem>
-                      <SelectItem value="property">property</SelectItem>
+                      <SelectItem value='cars'>cars</SelectItem>
+                      <SelectItem value='electronics'>electronics</SelectItem>
+                      <SelectItem value='property'>property</SelectItem>
                     </SelectContent>
                   </Select>
                 </FormItem>
@@ -142,20 +146,20 @@ export default function CardWithForm() {
             />
             <FormField
               control={form.control}
-              name="totalAmount"
+              name='totalAmount'
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Total Amount</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="Enter total of the contest"
+                      placeholder='Enter total of the contest'
                       {...field}
                     />
                   </FormControl>
                 </FormItem>
               )}
             />
-            <Button type="submit">Submit</Button>
+            <Button type='submit'>Submit</Button>
           </form>
         </Form>
       </CardContent>
