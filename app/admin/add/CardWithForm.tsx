@@ -33,6 +33,7 @@ import { useContest } from "@/states/contests";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { useToast } from "@/components/ui/use-toast";
 
 const formSchema = z.object({
   name: z.string().min(2).max(50),
@@ -46,6 +47,8 @@ export default function CardWithForm() {
     state.contests,
     state.addToContest,
   ]);
+
+  const { toast } = useToast();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -67,6 +70,11 @@ export default function CardWithForm() {
       remainingTickets: 5,
       live: true,
     });
+    toast({
+      title: "successfully contest added",
+      description: "",
+    });
+
     // values : defaultValues
     form.reset({ name: "", ticketPrice: "", type: "", totalAmount: "" });
   }
