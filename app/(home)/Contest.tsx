@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
@@ -10,16 +10,16 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
+} from '@/components/ui/card';
+import { Label } from '@/components/ui/label';
 
-import BuyNow from "./BuyNow";
-import Timer from "./Timer";
+import BuyNow from './BuyNow';
+import Timer from './Timer';
 
-import { useWinners } from "@/states/winners";
-import { useContest } from "@/states/contests";
-import { useTokens } from "@/states/tokens";
-import ShowResults from "./ShowResults";
+import { useWinners } from '@/states/winners';
+import { useContest } from '@/states/contests';
+import { useTokens } from '@/states/tokens';
+import ShowResults from './ShowResults';
 
 export default function Contest({ contestDetails }: any) {
   const {
@@ -45,7 +45,7 @@ export default function Contest({ contestDetails }: any) {
   const [count, setCount] = useState(1);
   const tokens = useTokens((state: any) => state.tokens);
 
-  const getwinner = () => {
+  const getWinner = () => {
     const filteredTokens = tokens
       .flat()
       .filter((token: any) => token.contestName === contestName);
@@ -63,7 +63,7 @@ export default function Contest({ contestDetails }: any) {
   };
 
   return (
-    <Card className="w-[350px] m-2">
+    <Card className='w-[350px] m-2'>
       <CardHeader>
         <CardTitle> {contestName}</CardTitle>
         <CardDescription>{contestNo}</CardDescription>
@@ -83,30 +83,30 @@ export default function Contest({ contestDetails }: any) {
               Number(totalAmount) ? (
                 <div>
                   <div>
-                    Get your tokens now!!!
-                    <Timer time={time} getwinner={getwinner} />
+                    Draw Date: 19th Feb
+                    <Timer time={time} getWinner={getWinner} />
                   </div>
                   {/* {winner && <div>{JSON.stringify(winner)}</div>} */}
                 </div>
               ) : null}
             </div>
           ) : (
-            <div>contest has been ended</div>
+            <div>Winner has been Announced</div>
           )}
         </div>
       </CardContent>
-      <CardFooter className="flex justify-between">
+      <CardFooter className='flex justify-between'>
         {/* <Counter /> */}
         <div>
           <Button
-            variant="outline"
+            variant='outline'
             onClick={() => setCount((prev) => prev - 1)}
           >
             -
           </Button>
           {count}
           <Button
-            variant="outline"
+            variant='outline'
             onClick={() => setCount((prev) => prev + 1)}
           >
             +
