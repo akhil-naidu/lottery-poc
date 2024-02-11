@@ -42,7 +42,7 @@ const ShowResults = ({ contestName }: any) => {
               <div className="flex items-center justify-center space-x-2">
                 <div className="flex-1 text-center">
                   <div className="text-4xl font-bold tracking-tighter">
-                    Token No : {winnerData?.random5Digit}
+                    Token No : {winnerData?.random7Digit}
                   </div>
                   <div className="uppercase mt-4">winner : USERNAME</div>
                 </div>

@@ -1,5 +1,5 @@
-function generateRandom5DigitNumber() {
-  return Math.floor(10000 + Math.random() * 90000);
+function generaterandom7DigitNumber() {
+  return Math.floor(1000000 + Math.random() * 9000000);
 }
 
 export function generateArrayOfTickts({
@@ -16,11 +16,11 @@ export function generateArrayOfTickts({
   const arrayOfTickets = [];
 
   for (let i = 0; i < count; i++) {
-    const random5DigitNumber = generateRandom5DigitNumber();
+    const random7DigitNumber = generaterandom7DigitNumber();
     arrayOfTickets.push({
       userId: userId,
       contestName: contestName,
-      random5Digit: random5DigitNumber,
+      random7Digit: random7DigitNumber,
       ticketPrice: ticketPrice,
     });
   }

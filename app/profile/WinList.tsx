@@ -18,8 +18,6 @@ const WinList = () => {
     state.addToWinners,
   ]);
 
-  console.log(winners);
-
   return (
     <div className="w-5/6 mx-auto">
       <h2 className="text-center font-semibold text-4xl m-4 mb-8">
@@ -30,7 +28,7 @@ const WinList = () => {
           <Card>
             <CardHeader>
               <CardTitle>Contest Name : {winner.contestName}</CardTitle>
-              <p>Ticket Number : {winner.random5Digit}</p>
+              <p>Ticket Number : {winner.random7Digit}</p>
             </CardHeader>
             <CardFooter>
               <p>Ticket Price : {winner.ticketPrice}$</p>

@@ -9,18 +9,24 @@ export const useContest = create((set) => ({
     });
   },
   updateLive: (contestId: any) => {
-    // set((state: any) => {
-    //   const myNextList = [...state.contests];
-    //   const contest = myNextList.find((a) => a.contestName === contestId);
-    //   contest.live = false;
-    //   return {
-    //     contests: myNextList,
-    //   };
-    // });
     set((state: any) => {
       const updatedContest = state.contests.map((contest: any) => {
         if (contest.contestName === contestId) {
           return { ...contest, live: false };
+        } else {
+          return contest;
+        }
+      });
+      return {
+        contests: updatedContest,
+      };
+    });
+  },
+  updateisWinner: (contestId: any) => {
+    set((state: any) => {
+      const updatedContest = state.contests.map((contest: any) => {
+        if (contest.contestName === contestId) {
+          return { ...contest, isWinner: true };
         } else {
           return contest;
         }

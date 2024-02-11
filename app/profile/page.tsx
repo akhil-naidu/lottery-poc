@@ -5,6 +5,7 @@ import {
 } from "@/components/ui/resizable";
 import UserTokens from "./UserTokens";
 import WinList from "./WinList";
+import MyContest from "./MyContest";
 
 const Page = () => {
   return (
@@ -16,6 +17,10 @@ const Page = () => {
         <ResizableHandle />
         <ResizablePanel>
           <WinList />
+        </ResizablePanel>
+        <ResizableHandle />
+        <ResizablePanel>
+          <MyContest />
         </ResizablePanel>
       </ResizablePanelGroup>
     </div>
