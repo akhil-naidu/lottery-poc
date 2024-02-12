@@ -3,17 +3,7 @@
 import React from "react";
 import { useContest } from "@/states/contests";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { useTokens } from "@/states/tokens";
-import { useWinners } from "@/states/winners";
+import MyContestCard from "./MyContestCard";
 
 const MyContest = () => {
   const [contests, updateLive, updateisWinner] = useContest((state: any) => [
@@ -21,35 +11,8 @@ const MyContest = () => {
     state.updateLive,
     state.updateisWinner,
   ]);
-  const tokens = useTokens((state: any) => state.tokens);
-  const [winners, addToWinners] = useWinners((state: any) => [
-    state.winners,
-    state.addToWinners,
-  ]);
 
   const userContests = contests.filter((contest: any) => contest.userId === 2);
-
-  const getwinner = (contestName: string, live: boolean) => {
-    const filteredTokens = tokens
-      .flat()
-      .filter((token: any) => token.contestName === contestName);
-
-    const generateWinnerToken = () => {
-      const randomIndex = Math.floor(Math.random() * filteredTokens.length);
-      return filteredTokens[randomIndex];
-    };
-
-    if (!live) {
-      const winner = generateWinnerToken();
-      //   updateLive(contestName);
-      updateisWinner(contestName);
-      addToWinners(winner);
-    }
-  };
-
-  const contestStop = (contestName: string) => {
-    updateLive(contestName);
-  };
 
   return (
     <div>
@@ -57,7 +20,7 @@ const MyContest = () => {
       {userContests.map((contest: any) => {
         return (
           <div key={contest.id}>
-            <div className="m-4 mt-6">
+            {/* <div className="m-4 mt-6">
               <Card>
                 <CardHeader>
                   <CardTitle>Contest Name : {contest.contestName}</CardTitle>
@@ -87,7 +50,8 @@ const MyContest = () => {
                   </Button>
                 </CardFooter>
               </Card>
-            </div>
+            </div> */}
+            <MyContestCard contest={contest} />
           </div>
         );
       })}

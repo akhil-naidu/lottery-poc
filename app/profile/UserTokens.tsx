@@ -2,32 +2,41 @@
 
 import React from "react";
 import { useTokens } from "@/states/tokens";
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableFooter,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
 
 import { useWinners } from "@/states/winners";
+import TokenCard from "./TokenCard";
 
 const UserTokens = () => {
   const tokens = useTokens((state: any) => state.tokens);
 
-  const [winners, addToWinners] = useWinners((state: any) => [
-    state.winners,
-    state.addToWinners,
-  ]);
+  // const contestList = [
+  //   ...new Set(
+  //     tokens.map((token: any) => {
+  //       return token.name;
+  //     })
+  //   ),
+  // ];
+
+  const contestList = [
+    ...new Set(
+      tokens.flat().map((list: any) => {
+        return list.contestName;
+      })
+    ),
+  ];
+
   return (
     <div>
       <h2 className="text-center font-semibold text-4xl m-4">
         Tokens Purchased
       </h2>
-      <Table className="">
+
+      {contestList.map((contest: any, index: number) => (
+        <div className="m-4" key={index}>
+          <TokenCard contest={contest} />
+        </div>
+      ))}
+      {/* <Table className="">
         <TableCaption>A list of your recent invoices.</TableCaption>
         <TableHeader>
           <TableRow>
@@ -45,7 +54,7 @@ const UserTokens = () => {
                 }`}
                 key={index}
               >
-                {/* <TableCell className="font-medium">{index + 1}</TableCell> */}
+                <TableCell className="font-medium">{index + 1}</TableCell>
                 <TableCell>{token.contestName}</TableCell>
                 <TableCell>{token.random5Digit}</TableCell>
                 <TableCell className="text-right">
@@ -55,13 +64,13 @@ const UserTokens = () => {
             ))
           )}
         </TableBody>
-        {/* <TableFooter>
+        <TableFooter>
           <TableRow>
             <TableCell colSpan={3}>Total</TableCell>
             <TableCell className="text-right">$0.00</TableCell>
           </TableRow>
-        </TableFooter> */}
-      </Table>
+        </TableFooter>
+      </Table> */}
     </div>
   );
 };
