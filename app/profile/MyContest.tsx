@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import React from "react";
-import { useContest } from "@/states/contests";
+import React from 'react';
+import { useContest } from '@/states/contests';
 
-import MyContestCard from "./MyContestCard";
+import MyContestCard from './MyContestCard';
 
 const MyContest = () => {
   const [contests, updateLive, updateisWinner] = useContest((state: any) => [
@@ -16,7 +16,7 @@ const MyContest = () => {
 
   return (
     <div>
-      <h2 className="text-center font-semibold text-4xl m-4">My Contests</h2>
+      <h2 className='text-center font-semibold text-4xl m-4'>Admin Panel</h2>
       {userContests.map((contest: any) => {
         return (
           <div key={contest.id}>

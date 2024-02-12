@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
@@ -9,12 +9,12 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
-import BuyNow from "./BuyNow";
-import { useTokens } from "@/states/tokens";
-import ShowResults from "./ShowResults";
-import { useWinners } from "@/states/winners";
+} from '@/components/ui/card';
+import { Label } from '@/components/ui/label';
+import BuyNow from './BuyNow';
+import { useTokens } from '@/states/tokens';
+import ShowResults from './ShowResults';
+import { useWinners } from '@/states/winners';
 
 export default function Contest({ contestDetails }: any) {
   const {
@@ -35,7 +35,7 @@ export default function Contest({ contestDetails }: any) {
   const winner = winners.find((win: any) => win.contestName === contestName);
 
   return (
-    <Card className="w-[350px] m-2">
+    <Card className='w-[350px] m-2'>
       <CardHeader>
         <CardTitle> {contestName}</CardTitle>
         <CardDescription>{contestNo}</CardDescription>
@@ -46,7 +46,7 @@ export default function Contest({ contestDetails }: any) {
         </div>
         <div>
           {isWinner ? (
-            <div>Winner ticket number : {winner.random7Digit}</div>
+            <div>Winner Token Number : {winner.random7Digit}</div>
           ) : (
             <div>
               {live ? (
@@ -58,30 +58,33 @@ export default function Contest({ contestDetails }: any) {
                     1000 >
                   Number(totalAmount) ? (
                     <div>
-                      <div>Reached limit</div>
+                      <div>Lucky Draw on 19th February</div>
                     </div>
-                  ) : null}
+                  ) : (
+                    'Draw Date is coming soon'
+                  )}
                 </div>
               ) : (
-                <div>Lucky Draw in 19th February</div>
+                <div>Draw is happening on live, link to URL</div>
               )}
             </div>
           )}
         </div>
+        {/* {live ? 'Draw Date is coming soon' : null} */}
       </CardContent>
-      <CardFooter className="flex justify-between">
+      <CardFooter className='flex justify-between'>
         {live ? (
-          <div className="flex justify-around">
+          <div className='flex justify-around'>
             <div>
               <Button
-                variant="outline"
+                variant='outline'
                 onClick={() => setCount((prev) => prev - 1)}
               >
                 -
               </Button>
               {count}
               <Button
-                variant="outline"
+                variant='outline'
                 onClick={() => setCount((prev) => prev + 1)}
               >
                 +

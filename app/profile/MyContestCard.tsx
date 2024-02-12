@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Card,
   CardContent,
@@ -6,11 +6,11 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { useTokens } from "@/states/tokens";
-import { useWinners } from "@/states/winners";
-import { useContest } from "@/states/contests";
+} from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { useTokens } from '@/states/tokens';
+import { useWinners } from '@/states/winners';
+import { useContest } from '@/states/contests';
 
 const MyContestCard = ({ contest }: { contest: any }) => {
   const [contests, updateLive, updateisWinner] = useContest((state: any) => [
@@ -25,6 +25,8 @@ const MyContestCard = ({ contest }: { contest: any }) => {
     state.winners,
     state.addToWinners,
   ]);
+
+  console.log(contest.totalAmount, contest.ticketPrice);
 
   const filteredTokens = tokens
     .flat()
@@ -49,8 +51,8 @@ const MyContestCard = ({ contest }: { contest: any }) => {
 
   return (
     <div>
-      {" "}
-      <div className="m-4 mt-6">
+      {' '}
+      <div className='m-4 mt-6'>
         <Card>
           <CardHeader>
             <CardTitle>Contest Name : {contest.contestName}</CardTitle>
@@ -58,7 +60,14 @@ const MyContestCard = ({ contest }: { contest: any }) => {
           </CardHeader>
           <CardContent>
             <p>Tickets sold : {filteredTokens.length}</p>
+            {Boolean(
+              contest.totalAmount / contest.ticketPrice <=
+                filteredTokens.length,
+            )
+              ? 'Reached Threshold'
+              : null}
           </CardContent>
+
           <CardFooter>
             {!contest.live ? (
               <Button onClick={() => getwinner()} disabled={contest.isWinner}>
@@ -68,7 +77,7 @@ const MyContestCard = ({ contest }: { contest: any }) => {
 
             <Button
               disabled={!contest.live}
-              className="ml-2"
+              className='ml-2'
               onClick={() => contestStop()}
             >
               Stop
