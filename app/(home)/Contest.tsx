@@ -55,7 +55,7 @@ export default function Contest({ contestDetails }: any) {
                     .flat()
                     .filter((token: any) => token.contestName === contestName)
                     .length *
-                    1000 >
+                    ticketPrice >=
                   Number(totalAmount) ? (
                     <div>
                       <div>Lucky Draw on 19th February</div>

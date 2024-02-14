@@ -49,6 +49,10 @@ const MyContestCard = ({ contest }: { contest: any }) => {
     updateLive(contest.contestName);
   };
 
+  const reachedThreshold = Boolean(
+    contest.totalAmount / contest.ticketPrice <= filteredTokens.length,
+  );
+
   return (
     <div>
       {' '}
@@ -60,12 +64,7 @@ const MyContestCard = ({ contest }: { contest: any }) => {
           </CardHeader>
           <CardContent>
             <p>Tickets sold : {filteredTokens.length}</p>
-            {Boolean(
-              contest.totalAmount / contest.ticketPrice <=
-                filteredTokens.length,
-            )
-              ? 'Reached Threshold'
-              : null}
+            {reachedThreshold ? 'Reached Threshold' : null}
           </CardContent>
 
           <CardFooter>
@@ -75,13 +74,15 @@ const MyContestCard = ({ contest }: { contest: any }) => {
               </Button>
             ) : null}
 
-            <Button
-              disabled={!contest.live}
-              className='ml-2'
-              onClick={() => contestStop()}
-            >
-              Stop
-            </Button>
+            {reachedThreshold ? (
+              <Button
+                disabled={!contest.live}
+                className='ml-2'
+                onClick={() => contestStop()}
+              >
+                Stop
+              </Button>
+            ) : null}
           </CardFooter>
         </Card>
       </div>
